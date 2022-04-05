@@ -1,0 +1,27 @@
+{
+	"name": "[nodata][events][multi alert][above threshold][default]",
+	"type": "event-v2 alert",
+	"query": "events(\"*\").rollup(\"count\").by(\"service\").last(\"5m\") > 1000",
+	"message": "Event monitor test QA\n \n@daljeet.sandu@datadoghq.com",
+	"tags": [],
+	"options": {
+		"thresholds": {
+			"critical": 1000,
+			"period": {
+				"digit": 5,
+				"name": "5 minute average",
+				"no_data_timeframe": 10,
+				"seconds": 300,
+				"tense": "last",
+				"text": "5 minutes",
+				"unit": "minutes",
+				"value": "last_5m"
+			},
+			"timeAggregator": "avg",
+			"comparison": ">"
+		},
+		"notify_audit": false,
+		"restriction_query": null,
+		"on_missing_data": "default"
+	}
+}
