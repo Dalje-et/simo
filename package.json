@@ -29,7 +29,7 @@
     "@oclif/test": "^2",
     "@types/chai": "^4",
     "@types/listr": "^0.14.4",
-    "@types/mocha": "^9.0.0",
+    "@types/mocha": "^9.1.0",
     "@types/node": "^16.9.4",
     "@types/node-fetch": "^2.6.1",
     "chai": "^4",
