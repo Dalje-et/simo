@@ -1,5 +1,5 @@
 import { Command, Flags, CliUx } from "@oclif/core"
-import { FlagInput, ParserOutput } from "@oclif/core/lib/interfaces";
+import { FlagInput, ParserOutput } from "@oclif/core/lib/interfaces"
 import fetch from "node-fetch"
 
 import generatePayload from "../../util/payload-generator"
@@ -69,6 +69,8 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
       on_missing_data: this.processedFlags.on_missing_data,
       multi: this.processedFlags.multi
     })
+
+    this.log(payload)
 
     CliUx.ux.action.start(`Creating a ${type} 🔮 `)
     const response = await this.postMonitor(JSON.stringify(payload))
