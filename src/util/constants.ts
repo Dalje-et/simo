@@ -20,7 +20,7 @@ export const TYPES:{ [key: string]: string } = {
 export const SIMPLE_QUERIES:{ [key: string]: string } = {
   logs: "logs(\"*\").index(\"*\").rollup(\"count\").last(\"5m\") ",
   events: "events(\"*\").rollup(\"count\").last(\"5m\") ",
-  audit: "audits(\"api/v1/usage\").rollup(\"count\").by(\"@http.url_details.path\").last(\"5m\") ",
+  audit: "audits(\"api/v1/usage\").rollup(\"count\").last(\"5m\") ",
   error: "",
   ci: "",
   rum: "",
