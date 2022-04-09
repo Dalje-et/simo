@@ -6,7 +6,7 @@ export default class Logs extends Base<typeof Logs.flags> {
   static description = "Create a logs monitor"
 
   static flags = {
-    ...Base.flags,
+    ...Base.flags
   };
 
   async run(): Promise<void> {

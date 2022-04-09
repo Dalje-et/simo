@@ -6,7 +6,7 @@ export default class Events extends Base<typeof Events.flags> {
   static description = "Create an events monitor"
 
   static flags = {
-    ...Base.flags,
+    ...Base.flags
   };
 
   async run(): Promise<void> {

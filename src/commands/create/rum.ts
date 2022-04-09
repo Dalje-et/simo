@@ -6,7 +6,7 @@ export default class Rum extends Base<typeof Rum.flags> {
   static description = "Create a rum monitor"
 
   static flags = {
-    ...Base.flags,
+    ...Base.flags
   };
 
   async run(): Promise<void> {

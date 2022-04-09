@@ -6,7 +6,7 @@ export default class AuditLogs extends Base<typeof AuditLogs.flags> {
   static description = "Create an audit logs monitor"
 
   static flags = {
-    ...Base.flags,
+    ...Base.flags
   };
 
   async run(): Promise<void> {

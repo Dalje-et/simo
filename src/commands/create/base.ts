@@ -36,7 +36,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
     name: Flags.string({
       description: "How the monitor should be titled.",
       required: false,
-      default: ""
+      default: "[{{type}}][multi/simple][{{operator}} threshold][nodata:{{on_misssing_dat}}]"
     })
   }
 
@@ -45,9 +45,6 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
   get processedFlags(): InferredFlagsType<T> {
     return this.parsedOutput?.flags ?? {}
   }
-
-  // default usage:
-  // simo create log = simo create log --no-multi --operator=above --on_missing_data=default
 
   postMonitor(payload:string): Promise<any> {
     return fetch("https://api.datadoghq.com/api/v1/monitor", {
