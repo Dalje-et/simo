@@ -1,5 +1,5 @@
-import { Command, Flags, CliUx } from "@oclif/core"
 import { FlagInput, ParserOutput } from "@oclif/core/lib/interfaces"
+import { Command, Flags, CliUx } from "@oclif/core"
 import fetch from "node-fetch"
 
 import generatePayload from "../../util/payload-generator"
@@ -36,7 +36,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
     name: Flags.string({
       description: "How the monitor should be titled.",
       required: false,
-      default: "[{{type}}][multi/simple][{{operator}} threshold][nodata:{{on_misssing_dat}}]"
+      default: ""
     })
   }
 
@@ -67,7 +67,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
       multi: this.processedFlags.multi
     })
 
-    CliUx.ux.action.start(`Creating a ${type} 🔮 `)
+    CliUx.ux.action.start(`Creating a ${type} monitor 🔮 `)
     const response = await this.postMonitor(JSON.stringify(payload))
     if (response.errors) {
       CliUx.ux.action.stop(`❌ ${JSON.stringify(response)}`)

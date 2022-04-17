@@ -1,5 +1,5 @@
-import { Command, Flags, CliUx } from "@oclif/core"
 import { FlagInput, ParserOutput } from "@oclif/core/lib/interfaces"
+import { Command, Flags } from "@oclif/core"
 import fetch from "node-fetch"
 
 // This is needed to get type safety working in derived classes

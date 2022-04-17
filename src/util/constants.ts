@@ -21,20 +21,20 @@ export const SIMPLE_QUERIES:{ [key: string]: string } = {
   logs: "logs(\"*\").index(\"*\").rollup(\"count\").last(\"5m\") ",
   events: "events(\"*\").rollup(\"count\").last(\"5m\") ",
   audit: "audits(\"api/v1/usage\").rollup(\"count\").last(\"5m\") ",
-  error: "",
+  error: "error-tracking-rum(\"*\").rollup(\"count\").last(\"5m\") ",
   ci: "",
-  rum: "",
-  trace: ""
+  rum: "rum(\"-@view.name:\\\"/shipping-error\\\" -@view.name:\\\"/inventory-error\\\"\").rollup(\"count\").last(\"5m\") ",
+  trace: "trace-analytics(\"*\").rollup(\"count\").last(\"5m\") "
 }
 
 export const MULTI_QUERIES:{ [key: string]: string } = {
   logs: "logs(\"*\").index(\"*\").rollup(\"count\").by(\"service\").last(\"5m\") ",
   events: "events(\"*\").rollup(\"count\").by(\"service\").last(\"5m\") ",
   audit: "audits(\"api/v1/usage\").rollup(\"count\").by(\"@http.url_details.path\").last(\"5m\") ",
-  error: "",
+  error: "error-tracking-rum(\"*\").rollup(\"count\").by(\"@issue.id\").last(\"5m\") ",
   ci: "",
-  rum: "",
-  trace: ""
+  rum: "rum(\"-@view.name:\\\"/shipping-error\\\" -@view.name:\\\"/inventory-error\\\"\").rollup(\"count\").by(\"@view.name\").last(\"5m\") ",
+  trace: "trace-analytics(\"*\").rollup(\"count\").by(\"resource_name\").last(\"5m\") "
 }
 
 export const ABOVE_THRESHOLD = 25

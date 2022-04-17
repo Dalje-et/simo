@@ -25,7 +25,7 @@ export default class Logs extends Base<typeof Logs.flags> {
         ddtags: "simo",
         service: "inventory",
         message: "Checking current inventory"
-      },
+      }
     ]
 
     this.ingestPerApi("https://http-intake.logs.datadoghq.com/api/v2/logs", JSON.stringify(payload))
