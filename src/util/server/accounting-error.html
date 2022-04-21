@@ -12,7 +12,7 @@
           clientToken: 'pubf3ea29a1c3b70be4efaeb12b5e6a48bd',
           applicationId: '264af7f9-d5fc-4438-916e-595304b51973',
           site: 'datadoghq.com',
-          service:'inventory-frontend',
+          service:'accounting-frontend',
           env:'prod',
           // Specify a version number to identify the deployed version of your application in Datadog
           // version: '1.0.0',
@@ -25,25 +25,13 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Service</title>
+    <title>Accounting Service</title>
   </head>
   <body>
-    <button class="action" onclick="createAction()">Create Action</button>
-    <button id="error" onclick="createError('bla')">Create Error</button>
-
     <script>
-      function createAction() {
-        console.log("Checking inventory")
-      }
-
-      function createError(s) {
-        // necessary as otherwise the error will be invoked once the page loads
-        if (s === 'bla') {
-          DD_RUM.onReady(function() {
-            DD_RUM.addError(new Error('Shipping error!'));
-          })
-        }
-      }
+      DD_RUM.onReady(function() {
+        DD_RUM.addError(new Error('Accounting error!'));
+      })
     </script>
   </body>
 </html>

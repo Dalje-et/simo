@@ -9,7 +9,7 @@ export default class Ci extends Base<typeof Ci.flags> {
   };
 
   async run(): Promise<void> {
-    // this.createMonitor("ci")
+    this.createMonitor("ci")
   }
 
 }

@@ -37,12 +37,20 @@ export function startServer(): void {
     return reply.sendFile("inventory.html")
   })
 
+  server.get("/accounting", opts, async (_, reply) => {
+    return reply.sendFile("accounting.html")
+  })
+
   server.get("/shipping-error", opts, async (_, reply) => {
     return reply.sendFile("shipping-error.html")
   })
 
   server.get("/inventory-error", opts, async (_, reply) => {
     return reply.sendFile("inventory-error.html")
+  })
+
+  server.get("/accounting-error", opts, async (_, reply) => {
+    return reply.sendFile("accounting-error.html")
   })
 
   const start = async () => {

@@ -22,7 +22,7 @@ export const SIMPLE_QUERIES:{ [key: string]: string } = {
   events: "events(\"*\").rollup(\"count\").last(\"5m\") ",
   audit: "audits(\"api/v1/usage\").rollup(\"count\").last(\"5m\") ",
   error: "error-tracking-rum(\"*\").rollup(\"count\").last(\"5m\") ",
-  ci: "",
+  ci: "ci-pipelines(\"ci_level:pipeline\").rollup(\"count\").last(\"5m\") ",
   rum: "rum(\"-@view.name:\\\"/shipping-error\\\" -@view.name:\\\"/inventory-error\\\"\").rollup(\"count\").last(\"5m\") ",
   trace: "trace-analytics(\"*\").rollup(\"count\").last(\"5m\") "
 }
@@ -32,7 +32,7 @@ export const MULTI_QUERIES:{ [key: string]: string } = {
   events: "events(\"*\").rollup(\"count\").by(\"service\").last(\"5m\") ",
   audit: "audits(\"api/v1/usage\").rollup(\"count\").by(\"@http.url_details.path\").last(\"5m\") ",
   error: "error-tracking-rum(\"*\").rollup(\"count\").by(\"@issue.id\").last(\"5m\") ",
-  ci: "",
+  ci: "ci-pipelines(\"ci_level:pipeline\").rollup(\"count\").by(\"@ci.pipeline.name\").last(\"5m\") ",
   rum: "rum(\"-@view.name:\\\"/shipping-error\\\" -@view.name:\\\"/inventory-error\\\"\").rollup(\"count\").by(\"@view.name\").last(\"5m\") ",
   trace: "trace-analytics(\"*\").rollup(\"count\").by(\"resource_name\").last(\"5m\") "
 }

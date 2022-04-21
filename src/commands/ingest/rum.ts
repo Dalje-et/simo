@@ -31,8 +31,8 @@ export default class Rum extends Base<typeof Rum.flags> {
         return
       }
 
+      await page.goto("http://localhost:3000/shipping-error")
       await page.goto("http://localhost:3000/shipping")
-      await page.goto("http://localhost:3000/inventory")
 
       // have to clear all cookies as otherwise the RUM SDK won't account each page.goto() as a new session
       // see https://docs.datadoghq.com/real_user_monitoring/browser/troubleshooting/#rum-cookies

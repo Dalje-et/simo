@@ -1,0 +1,66 @@
+{
+	"name": "a + b; default",
+	"type": "rum alert",
+	"query": "formula(\"query + query1\").last(\"5m\") > 1000",
+	"message": "@daljeet.sandu@datadoghq.com",
+	"tags": [],
+	"options": {
+		"thresholds": {
+			"critical": 1000,
+			"period": {
+				"digit": 5,
+				"name": "5 minute average",
+				"no_data_timeframe": 10,
+				"seconds": 300,
+				"tense": "last",
+				"text": "5 minutes",
+				"unit": "minutes",
+				"value": "last_5m",
+				"timeString": "5m",
+				"unitAbbreviation": "m"
+			},
+			"timeAggregator": "avg",
+			"comparison": ">"
+		},
+		"enable_logs_sample": false,
+		"notify_audit": false,
+		"restriction_query": null,
+		"silenced": {},
+		"on_missing_data": "default",
+		"include_tags": true,
+		"groupby_simple_monitor": false,
+		"escalation_message": "",
+		"variables": [
+			{
+				"data_source": "rum",
+				"name": "query",
+				"search": {
+					"query": "@view.name:\"/shipping\""
+				},
+				"indexes": [
+					"*"
+				],
+				"compute": {
+					"aggregation": "count"
+				},
+				"group_by": []
+			},
+			{
+				"data_source": "rum",
+				"name": "query1",
+				"search": {
+					"query": "@view.name:\"/inventory\""
+				},
+				"indexes": [
+					"*"
+				],
+				"compute": {
+					"aggregation": "count"
+				},
+				"group_by": []
+			}
+		]
+	},
+	"priority": null,
+	"restricted_roles": null
+}
