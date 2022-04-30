@@ -26,7 +26,7 @@ Let's make this as quick and easy as possible for you. Make sure you have the fo
     alias agentstart="launchctl start com.datadoghq.agent"
     alias agentstop="launchctl stop com.datadoghq.agent"
     alias agentstatus="datadog-agent status"
-    alias agentconfig="code /opt/datadog-agent/etc/datadog.yaml"
+    alias agentconfig="cat /opt/datadog-agent/etc/datadog.yaml"
   ```
   - don't forget to run `source ~/.bashrc` after editing the file in order to reload
 
