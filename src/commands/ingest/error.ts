@@ -1,6 +1,6 @@
 import { CliUx } from "@oclif/core"
 
-import { startServer, stopServer } from "../../util/server/server"
+import { startServer } from "../../util/server/server"
 import Base from "./base"
 
 export default class ErrorTracking extends Base<typeof ErrorTracking.flags> {
@@ -23,7 +23,7 @@ export default class ErrorTracking extends Base<typeof ErrorTracking.flags> {
     const page = await browser.newPage()
 
     const frequency: number = this.processedFlags.trigger ? 10_000 : 30_000
-    const startTime:number = Date.now()
+    const startTime: number = Date.now()
     const interval = setInterval(async () => {
       if (Date.now() - startTime > 240_000) { // run for 4 minutes
         clearInterval(interval)

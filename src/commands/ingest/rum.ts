@@ -23,7 +23,7 @@ export default class Rum extends Base<typeof Rum.flags> {
     const page = await browser.newPage()
 
     const frequency: number = this.processedFlags.trigger ? 10_000 : 30_000
-    const startTime:number = Date.now()
+    const startTime: number = Date.now()
     const interval = setInterval(async () => {
       if (Date.now() - startTime > 240_000) { // run for 4 minutes
         clearInterval(interval)

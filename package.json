@@ -1,7 +1,7 @@
 {
   "name": "simo",
   "version": "0.0.0",
-  "description": "CLI to simulate monitor transitions",
+  "description": "CLI to simulate monitor behaviour",
   "author": "Dalje-et @Dalje-et",
   "bin": {
     "simo": "./bin/run"
@@ -17,7 +17,7 @@
     "/oclif.manifest.json"
   ],
   "dependencies": {
-    "@oclif/core": "^1.6.4",
+    "@oclif/core": "^1.7.0",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.0.1",
     "dd-trace": "^2.5.0",
@@ -25,17 +25,19 @@
     "fastify-static": "^4.6.1",
     "listr": "^0.14.3",
     "node-fetch": "^2.6.7",
-    "puppeteer": "^13.5.2",
-    "puppeteer-core": "^13.5.2",
-    "winston": "^3.6.0"
+    "node-notifier": "^10.0.1",
+    "puppeteer": "^13.6.0",
+    "puppeteer-core": "^13.6.0",
+    "winston": "^3.7.2"
   },
   "devDependencies": {
     "@oclif/test": "^2",
     "@types/chai": "^4",
     "@types/listr": "^0.14.4",
-    "@types/mocha": "^9.0.0",
+    "@types/mocha": "^9.1.0",
     "@types/node": "^16.9.4",
     "@types/node-fetch": "^2.6.1",
+    "@types/node-notifier": "^8.0.2",
     "chai": "^4",
     "eslint": "^7.32.0",
     "eslint-config-oclif": "^4",
@@ -43,10 +45,10 @@
     "globby": "^11",
     "mocha": "^9",
     "oclif": "^2",
-    "shx": "^0.3.3",
-    "ts-node": "^10.2.1",
+    "shx": "^0.3.4",
+    "ts-node": "^10.7.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.3"
+    "typescript": "^4.6.3"
   },
   "oclif": {
     "bin": "simo",

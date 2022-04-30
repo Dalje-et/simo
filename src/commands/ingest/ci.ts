@@ -13,11 +13,14 @@ export default class CIPipeline extends Base<typeof CIPipeline.flags> {
 
   async run(): Promise<void> {
     CliUx.ux.action.start("Starting to CI Pipeline events.. 🔮 ")
-    // TODO replace with ENV VAR
-    const repo = "/Users/daljeet.sandu/datadog/simo"
 
-    const frequency: number = this.processedFlags.trigger ? 10_000 : 30_000
-    const startTime:number = Date.now()
+    if (!process.env.SIMO_BASE_PATH) {
+      this.error("No value for SIMO_BASE_PATH found. Please declare this env variable first.")
+    }
+
+    // the CI takes ~20secs to run; using anything below that will result in skipped jobs
+    const frequency: number = this.processedFlags.trigger ? 25_000 : 30_000
+    const startTime: number = Date.now()
     const interval = setInterval(async () => {
       if (Date.now() - startTime > 240_000) { // run for 4 minutes
         clearInterval(interval)
@@ -25,7 +28,7 @@ export default class CIPipeline extends Base<typeof CIPipeline.flags> {
       }
 
       // sudo chmod -R 777 /yourProjectDirectoryName
-      execFile(repo + "/src/util/trigger-ci.sh", (error, stdout, stderr) => {
+      execFile(process.env.SIMO_BASE_PATH + "/src/util/trigger-ci.sh", (error, stdout, stderr) => {
         if (error) {
           console.log(error)
         }

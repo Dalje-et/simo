@@ -1,5 +1,6 @@
 import { FlagInput, ParserOutput } from "@oclif/core/lib/interfaces"
 import { Command, Flags } from "@oclif/core"
+// import * as notifier from "node-notifier"
 import fetch from "node-fetch"
 
 // This is needed to get type safety working in derived classes
@@ -26,6 +27,45 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
   get processedFlags(): InferredFlagsType<T> {
     return this.parsedOutput?.flags ?? {}
   }
+
+  // static nc = new notifier.NotificationCenter()
+
+  /*
+   * Sends a notification at the end of an ingestion to ask the user how to proceed.
+   *
+   * The user can either decide to continue the ingestion or stop.
+   *
+   * Returns "continue" if the users wants to resume ingestions or "stop" if the user wants to halt ingestion,
+   * dismiss the notification, or let the notification time out.
+  async notify(type: string): Promise<string> {
+    let res = ""
+
+    nc.notify({
+      title: "simo",
+      message: `Done ingesting ${type}. How do you want to proceed?`,
+      sound: "Funk",
+      // case sensitive
+      closeLabel: "Stop ingesting",
+      actions: "Continue",
+      timeout: 6
+    }, function (err, _, metadata) {
+      if (err) throw err
+      res = metadata && metadata.activationValue === "Continue" ? "continue" : "stop"
+    })
+
+    console.log(1)
+    await this.sleep(10_000)
+    console.log(2)
+
+    return res
+  }
+
+  sleep(ms: number): Promise<any> {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms)
+    })
+  }
+  */
 
   /*
    * Ingests data via Datadog API every 10 or 30 seconds for exactly three minutes.
