@@ -1,48 +1,59 @@
-oclif-hello-world
+simo
 =================
 
-oclif example Hello World CLI
+Your favourite tool to **si**mulate **mo**nitor behaviour
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
+# Introduction
 
-<!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
-# Usage
-<!-- usage -->
-```sh-session
-$ npm install -g simo
-$ simo COMMAND
-running command...
-$ simo (--version)
-simo/0.0.0 darwin-x64 node-v17.5.0
-$ simo --help [COMMAND]
-USAGE
-  $ simo COMMAND
-...
+`simo` is a light-weight CLI tool that has mainly two responsibilities: **create** monitors and **ingest** data into your Datadog org to eventually cause the created monitors to trigger certain behaviour. Its purpose is to introduce e2e tests with on Monitors within production. For optimal results, `simo` should be used in your personal org.
+
+# Getting Started
+
+Being built in Node.js, `simo` could technically be installed via npm, e.g. via `npm install -g simo`. However, the author of this is incredibly lazy and at this point of time doesn't want this tool to be publically available. Therefore, in order to use `simo`, **you need to fork this repository in your own Github account** and work on that fork.
+
+## Prerequisites
+
+Let's make this as quick and easy as possible for you. Make sure you have the following things ready: 
+
+- a Github account (duh)
+- have [Node.js and nvm](https://github.com/nvm-sh/nvm#installing-and-updating) installed (you can check with `node -v` and `npm -v`)
+- a personal Datdog org
+- a locally running Datadog agent
+  -  visit the integration page, select agents, and select your OS (e.g. [OSX](https://app.datadoghq.com/account/settings#agent/mac))
+  -  follow the installation instructions on the page
+  -  for OSX users, it's useful to add these aliases at the bottom of the file `~/.bashrc` or `~/.bash_profile` (create either one of the file if none exists):
+  ```
+    alias agentstart="launchctl start com.datadoghq.agent"
+    alias agentstop="launchctl stop com.datadoghq.agent"
+    alias agentstatus="datadog-agent status"
+    alias agentconfig="code /opt/datadog-agent/etc/datadog.yaml"
+  ```
+  - don't forget to run `source ~/.bashrc` after editing the file in order to reload
+
+## Installation
+
+Follow these steps to set up `simo` locally:
+
+- Clone your forked Github `simo` repository
+- Choose the location of this directory carefully. After cloning the repo, open your terminal and navigate to the clone repo. Make sure you are within the repo and then run `pwd`. The output is likely going to look like `/path/to/directory/simo`
+- Copy the output of the `pwd` command and edit your `~/.bashrc` file again, add the following lines to the bottom of the file:
 ```
-<!-- usagestop -->
-# Commands
-<!-- commands -->
-* [`simo hello PERSON`](#simo-hello-person)
-* [`simo hello world`](#simo-hello-world)
-* [`simo help [COMMAND]`](#simo-help-command)
-* [`simo plugins`](#simo-plugins)
-* [`simo plugins:install PLUGIN...`](#simo-pluginsinstall-plugin)
-* [`simo plugins:inspect PLUGIN...`](#simo-pluginsinspect-plugin)
-* [`simo plugins:install PLUGIN...`](#simo-pluginsinstall-plugin-1)
-* [`simo plugins:link PLUGIN`](#simo-pluginslink-plugin)
-* [`simo plugins:uninstall PLUGIN...`](#simo-pluginsuninstall-plugin)
-* [`simo plugins:uninstall PLUGIN...`](#simo-pluginsuninstall-plugin-1)
-* [`simo plugins:uninstall PLUGIN...`](#simo-pluginsuninstall-plugin-2)
-* [`simo plugins update`](#simo-plugins-update)
+export DD_API_KEY="your-api-key-here"
+export DD_APPLICATION_KEY="your-application-key-here"
+export SIMO_BASE_PATH="output-of-pwd-here"
 
-## `simo hello PERSON`
+alias simo="output-of-pwd-here"/bin/dev
+```
+- run 
+
+# Documentation
+<!-- commands -->
+* [`simo create`](#simo-create)
+  * [`simo create ci`](#simo-create-ci)
+* [`simo ingest`](#simo-ingest)
+  * [`simo ingest ci`](#simo-ingest-ci)
+
+## `simo create`
 
 Say hello
 
