@@ -18,8 +18,9 @@ export default class CIPipeline extends Base<typeof CIPipeline.flags> {
       this.error("No value for SIMO_BASE_PATH found. Please declare this env variable first.")
     }
 
-    const frequency: number = this.processedFlags.trigger ? 10_000 : 30_000
-    const startTime:number = Date.now()
+    // the CI takes ~20secs to run; using anything below that will result in skipped jobs
+    const frequency: number = this.processedFlags.trigger ? 25_000 : 30_000
+    const startTime: number = Date.now()
     const interval = setInterval(async () => {
       if (Date.now() - startTime > 240_000) { // run for 4 minutes
         clearInterval(interval)

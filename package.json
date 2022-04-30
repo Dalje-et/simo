@@ -25,6 +25,7 @@
     "fastify-static": "^4.6.1",
     "listr": "^0.14.3",
     "node-fetch": "^2.6.7",
+    "node-notifier": "^10.0.1",
     "puppeteer": "^13.6.0",
     "puppeteer-core": "^13.5.2",
     "winston": "^3.7.2"
@@ -36,6 +37,7 @@
     "@types/mocha": "^9.1.0",
     "@types/node": "^16.9.4",
     "@types/node-fetch": "^2.6.1",
+    "@types/node-notifier": "^8.0.2",
     "chai": "^4",
     "eslint": "^7.32.0",
     "eslint-config-oclif": "^4",
