@@ -27,7 +27,7 @@
     "node-fetch": "^2.6.7",
     "node-notifier": "^10.0.1",
     "puppeteer": "^13.6.0",
-    "puppeteer-core": "^13.5.2",
+    "puppeteer-core": "^13.6.0",
     "winston": "^3.7.2"
   },
   "devDependencies": {
