@@ -1,7 +1,7 @@
 {
   "name": "simo",
   "version": "0.0.0",
-  "description": "CLI to simulate monitor transitions",
+  "description": "CLI to simulate monitor behaviour",
   "author": "Dalje-et @Dalje-et",
   "bin": {
     "simo": "./bin/run"
