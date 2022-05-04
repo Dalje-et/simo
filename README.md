@@ -48,298 +48,137 @@ alias simo="output-of-pwd-here"/bin/dev
 
 # Documentation
 <!-- commands -->
-* [`simo create`](#simo-create)
-  * [`simo create ci`](#simo-create-ci)
+* [`simo create`](##simo-create)
+  * [`simo create audit`](###simo-create-audit)
+  * [`simo create ci`](###simo-create-ci)
+  * [`simo create error-tracking`](###simo-create-error-tracking)
+  * [`simo create events`](###simo-create-events)
+  * [`simo create logs`](###simo-create-logs)
+  * [`simo create rum`](###simo-create-rum)
+  * [`simo create trace-analytics`](###simo-create-trace-analytics)
 * [`simo ingest`](#simo-ingest)
   * [`simo ingest ci`](#simo-ingest-ci)
 
 ## `simo create`
 
-Say hello
+This command "group" is responsible for the creation of monitors. It needs to be followed by a monitor type, namely one of [`audit`, `ci`, `error`, `events`, `logs`, `rum`, `trace-analytics`]. No other arguments or flags are required. Mostly all commands support the same flags, however, they are all optional. 
+
+The default naming convention of a created monitor is: 
 
 ```
-USAGE
-  $ simo hello [PERSON] -f <value>
+[{{type}}][(multi|simple) alert][(above|below) threshold][{{nodata:on_missing_data_value}}]
+```
 
-ARGUMENTS
-  PERSON  Person to say hello to
+### `simo create audit`
+
+Creates an audit logs monitor
+
+USAGE
+  $ simo create audit [--multi] [--operator above|below] [--on_missing_data
+    show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
 
 FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
+  --multi                     Whether or not the monitor is broken down on different groups.
+  --name=<value>              How the monitor should be titled.
+  --on_missing_data=<option>  [default: default] How the monitor should react if no incoming data detected.
+                              <options: show_no_data|show_and_notify_no_data|resolve|default>
+  --operator=<option>         [default: above] Operator that shall be used for the threshold.
+                              <options: above|below>
 
-DESCRIPTION
-  Say hello
+### `simo create ci`
 
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
+Creates a ci monitor
 
-_See code: [dist/commands/hello/index.ts](https://github.com/Dalj-et/simo/blob/v0.0.0/dist/commands/hello/index.ts)_
-
-## `simo hello world`
-
-Say hello world
-
-```
 USAGE
-  $ simo hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
-```
-
-## `simo help [COMMAND]`
-
-Display help for simo.
-
-```
-USAGE
-  $ simo help [COMMAND] [-n]
-
-ARGUMENTS
-  COMMAND  Command to show help for.
+  $ simo create ci [--multi] [--operator above|below] [--on_missing_data
+    show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
 
 FLAGS
-  -n, --nested-commands  Include all nested commands in the output.
+  --multi                     Whether or not the monitor is broken down on different groups.
+  --name=<value>              How the monitor should be titled.
+  --on_missing_data=<option>  [default: default] How the monitor should react if no incoming data detected.
+                              <options: show_no_data|show_and_notify_no_data|resolve|default>
+  --operator=<option>         [default: above] Operator that shall be used for the threshold.
+                              <options: above|below>
 
-DESCRIPTION
-  Display help for simo.
-```
+### `simo create error-tracking`
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
+Creates an error-tracking monitor
 
-## `simo plugins`
-
-List installed plugins.
-
-```
 USAGE
-  $ simo plugins [--core]
+  $ simo create error [--multi] [--operator above|below] [--on_missing_data
+    show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
 
 FLAGS
-  --core  Show core plugins.
+  --multi                     Whether or not the monitor is broken down on different groups.
+  --name=<value>              How the monitor should be titled.
+  --on_missing_data=<option>  [default: default] How the monitor should react if no incoming data detected.
+                              <options: show_no_data|show_and_notify_no_data|resolve|default>
+  --operator=<option>         [default: above] Operator that shall be used for the threshold.
+                              <options: above|below>
 
-DESCRIPTION
-  List installed plugins.
+### `simo create events`
 
-EXAMPLES
-  $ simo plugins
-```
+Creates an event monitor
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.0.11/src/commands/plugins/index.ts)_
-
-## `simo plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
 USAGE
-  $ simo plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
+  $ simo create event [--multi] [--operator above|below] [--on_missing_data
+    show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
 
 FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
+  --multi                     Whether or not the monitor is broken down on different groups.
+  --name=<value>              How the monitor should be titled.
+  --on_missing_data=<option>  [default: default] How the monitor should react if no incoming data detected.
+                              <options: show_no_data|show_and_notify_no_data|resolve|default>
+  --operator=<option>         [default: above] Operator that shall be used for the threshold.
+                              <options: above|below>
 
-DESCRIPTION
-  Installs a plugin into the CLI.
+### `simo create logs`
 
-  Can be installed from npm or a git url.
+Creates a logs monitor
 
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-ALIASES
-  $ simo plugins add
-
-EXAMPLES
-  $ simo plugins:install myplugin 
-
-  $ simo plugins:install https://github.com/someuser/someplugin
-
-  $ simo plugins:install someuser/someplugin
-```
-
-## `simo plugins:inspect PLUGIN...`
-
-Displays installation properties of a plugin.
-
-```
 USAGE
-  $ simo plugins:inspect PLUGIN...
-
-ARGUMENTS
-  PLUGIN  [default: .] Plugin to inspect.
+  $ simo create logs [--multi] [--operator above|below] [--on_missing_data
+    show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
 
 FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
+  --multi                     Whether or not the monitor is broken down on different groups.
+  --name=<value>              How the monitor should be titled.
+  --on_missing_data=<option>  [default: default] How the monitor should react if no incoming data detected.
+                              <options: show_no_data|show_and_notify_no_data|resolve|default>
+  --operator=<option>         [default: above] Operator that shall be used for the threshold.
+                              <options: above|below>
 
-DESCRIPTION
-  Displays installation properties of a plugin.
+### `simo create rum`
 
-EXAMPLES
-  $ simo plugins:inspect myplugin
-```
+Creates a rum monitor
 
-## `simo plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
 USAGE
-  $ simo plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
+  $ simo create rum [--multi] [--operator above|below] [--on_missing_data
+    show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
 
 FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
+  --multi                     Whether or not the monitor is broken down on different groups.
+  --name=<value>              How the monitor should be titled.
+  --on_missing_data=<option>  [default: default] How the monitor should react if no incoming data detected.
+                              <options: show_no_data|show_and_notify_no_data|resolve|default>
+  --operator=<option>         [default: above] Operator that shall be used for the threshold.
+                              <options: above|below>
 
-DESCRIPTION
-  Installs a plugin into the CLI.
+### `simo create trace-analytics`
 
-  Can be installed from npm or a git url.
+Creates a trace-analytics monitor
 
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-ALIASES
-  $ simo plugins add
-
-EXAMPLES
-  $ simo plugins:install myplugin 
-
-  $ simo plugins:install https://github.com/someuser/someplugin
-
-  $ simo plugins:install someuser/someplugin
-```
-
-## `simo plugins:link PLUGIN`
-
-Links a plugin into the CLI for development.
-
-```
 USAGE
-  $ simo plugins:link PLUGIN
-
-ARGUMENTS
-  PATH  [default: .] path to plugin
+  $ simo create trace-analytics [--multi] [--operator above|below] [--on_missing_data
+    show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
 
 FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
+  --multi                     Whether or not the monitor is broken down on different groups.
+  --name=<value>              How the monitor should be titled.
+  --on_missing_data=<option>  [default: default] How the monitor should react if no incoming data detected.
+                              <options: show_no_data|show_and_notify_no_data|resolve|default>
+  --operator=<option>         [default: above] Operator that shall be used for the threshold.
+                              <options: above|below>
 
-DESCRIPTION
-  Links a plugin into the CLI for development.
-
-  Installation of a linked plugin will override a user-installed or core plugin.
-
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
-  command will override the user-installed or core plugin implementation. This is useful for development work.
-
-EXAMPLES
-  $ simo plugins:link myplugin
-```
-
-## `simo plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ simo plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ simo plugins unlink
-  $ simo plugins remove
-```
-
-## `simo plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ simo plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ simo plugins unlink
-  $ simo plugins remove
-```
-
-## `simo plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ simo plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ simo plugins unlink
-  $ simo plugins remove
-```
-
-## `simo plugins update`
-
-Update installed plugins.
-
-```
-USAGE
-  $ simo plugins update [-h] [-v]
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Update installed plugins.
-```
 <!-- commandsstop -->
