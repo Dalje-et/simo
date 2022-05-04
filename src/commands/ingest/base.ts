@@ -16,7 +16,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
 
   static flags = {
     trigger: Flags.boolean({
-      description: "Will ingest too much data in order to make the monitor trigger (only supported if you kept the default values)",
+      description: "Will ingest enough data in order to trigger the monitor (only supported if you kept the default values)",
       required: false,
       default: false
     })
@@ -80,7 +80,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
 
     const startTime:number = Date.now()
     const interval = setInterval(() => {
-      if (Date.now() - startTime > 180_000) { // run for 3 minutes
+      if (Date.now() - startTime > 360_000) { // run for 6 minutes
         clearInterval(interval)
       }
 
@@ -103,7 +103,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
 
     const startTime:number = Date.now()
     const interval = setInterval(() => {
-      if (Date.now() - startTime > 180_000) { // run for 3 minutes
+      if (Date.now() - startTime > 360_000) { // run for 3 minutes
         clearInterval(interval)
       }
 

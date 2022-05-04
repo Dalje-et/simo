@@ -25,7 +25,7 @@ export default class ErrorTracking extends Base<typeof ErrorTracking.flags> {
     const frequency: number = this.processedFlags.trigger ? 10_000 : 30_000
     const startTime: number = Date.now()
     const interval = setInterval(async () => {
-      if (Date.now() - startTime > 240_000) { // run for 4 minutes
+      if (Date.now() - startTime > 360_000) { // run for 6 minutes
         clearInterval(interval)
         await browser.close()
         return

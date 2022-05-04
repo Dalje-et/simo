@@ -22,7 +22,7 @@ export default class CIPipeline extends Base<typeof CIPipeline.flags> {
     const frequency: number = this.processedFlags.trigger ? 25_000 : 30_000
     const startTime: number = Date.now()
     const interval = setInterval(async () => {
-      if (Date.now() - startTime > 240_000) { // run for 4 minutes
+      if (Date.now() - startTime > 360_000) { // run for 6 minutes
         clearInterval(interval)
         return
       }
