@@ -16,7 +16,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
 
   static flags = {
     trigger: Flags.boolean({
-      description: "Will ingest enough data in order to trigger the monitor (only supported if you kept the default values)",
+      description: "Will ingest enough data in order to trigger a monitor created by simo (only supported if you kept the default values)",
       required: false,
       default: false
     })

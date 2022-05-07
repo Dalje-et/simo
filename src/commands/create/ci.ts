@@ -2,7 +2,7 @@ import Base from "./base"
 
 export default class Ci extends Base<typeof Ci.flags> {
 
-  static description = "Create a CI Pipelines monitor"
+  static description = "Create a CI Pipeline monitor"
 
   static flags = {
     ...Base.flags

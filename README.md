@@ -19,11 +19,11 @@ Being built in Node.js, `simo` could technically be installed via npm, e.g. via 
 
 ## Prerequisites
 
-Let's make this as quick and easy as possible for you. Make sure you have the following things ready: 
+Let's make this as quick and easy as possible for you. Make sure you have the following things ready (~10mins): 
 
-- a Github account (duh)
+- a Github account that you can use in your terminal
 - have [Node.js and nvm](https://github.com/nvm-sh/nvm#installing-and-updating) installed (you can check with `node -v` and `npm -v`)
-- a personal Datdog org
+- a personal Datadog org
 - a locally running Datadog agent
   -  visit the integration page, select agents, and select your OS (e.g. [OSX](https://app.datadoghq.com/account/settings#agent/mac))
   -  follow the installation instructions on the page
@@ -39,7 +39,7 @@ Let's make this as quick and easy as possible for you. Make sure you have the fo
 
 ## Installation
 
-Follow these steps to set up `simo` locally:
+Follow these steps to set up `simo` locally (~5mins):
 
 - Clone your forked Github `simo` repository
 - Choose the location of this directory carefully. After cloning the repo, open your terminal and navigate to the clone repo. Make sure you are within the repo and then run `pwd`. The output is likely going to look like `/path/to/directory/simo`
@@ -116,7 +116,7 @@ FLAGS
 
 ### `simo create ci`
 
-Creates a CI Visibility monitor.
+Creates a CI Pipeline monitor.
 
 ```
 USAGE
@@ -250,7 +250,7 @@ FLAGS
 
 ### `simo ingest ci`
 
-Ingests CI events into your org by TODO
+Ingests CI Pipeline events into your org by automatically triggering builds in your fork of this repository.
 
 ```
 USAGE
@@ -282,7 +282,7 @@ FLAGS
 
 ### `simo ingest events`
 
-Events are ingested ininto your org using the official [API](https://docs.datadoghq.com/api/latest/events/#post-an-event). The payload used for ingestion is:
+Events are ingested into your org using the official [API](https://docs.datadoghq.com/api/latest/events/#post-an-event). The payload used for ingestion is:
 
 ```
 [
@@ -313,7 +313,7 @@ FLAGS
 
 ### `simo ingest logs`
 
-Logs are ingested ininto your org using the official [API](https://docs.datadoghq.com/api/latest/logs/#send-logs). The payload used for ingestion is:
+Logs are ingested into your org using the official [API](https://docs.datadoghq.com/api/latest/logs/#send-logs). The payload used for ingestion is:
 
 ```
 [
