@@ -251,7 +251,16 @@ FLAGS
 
 ### `simo ingest ci`
 
-Ingests CI Pipeline events into your org by automatically triggering builds in your fork of this repository.
+Ingests CI Pipeline events into your org by automatically triggering builds in your fork of this repository. Running this command will run the [trigger-ci.sh file](src/util/trigger-ci.sh). This script adds a file called `allgood.txt` and commits and pushes it. Afterwards, it removes the file again from the repository, and pushes the changes again. 
+
+The repository has two Github Actions configured that run after each push:
+
+- File existence check: checks if a file called `allgood.txt` exists. If said file is missing, the build fails.
+- Echo some stuff: prints some random stuff during the build process (honestly is just here to have another pipeline so that we can build multi-alerts)
+
+Putting it all together, `simo ingest ci` adds and removes a file, pushes the changes after each change, and the Github Actions CI of **simo** succeeds / fails depending on that. The reason for that was to have a bit more flexibility when creating monitors (group by pipeline name, group by build status etc). The result of running this command can be seen below:
+
+![CI Pipeline Events Ingestion](https://github.com/Dalje-et/simo/blob/main/static/images/ci.png)
 
 ```
 USAGE
