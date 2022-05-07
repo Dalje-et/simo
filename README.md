@@ -50,6 +50,9 @@ export SIMO_BASE_PATH="output-of-pwd-here"
 alias simo="output-of-pwd-here"/bin/dev
 ```
 
+- set up CI
+- set up RUM
+
 # Tags
 
 Each monitor created by `simo` is by default tagged with `simo`. If you want to add more default tags, modify the `generatePayload` method in `/src/util/payload-generator.ts` accordingly.
@@ -223,13 +226,17 @@ This command group is responsible for the ingestion of data. It needs to be foll
 
 The ingestion adheres to the default threshold values that are set when creating monitors with `simo create`. Running `simo ingest` will keep monitors in the `OK` status.
 
+**Ingestion Frequency and Triggering**
 `simo ingest` has only one flag: `--trigger`. This flag will increase the frequency of data being ingested, cross the default set thresholds, and therefore trigger the monitors.
+
+Explain how it usually works
+
 
 ### `simo ingest audit-logs`
 
-Ingests Audit Logs to your instance by calling the endpoints `v1/usage/logs-by-retention` and `v1/usage/hosts`.
+Ingests Audit Logs to your org by calling the endpoints `v1/usage/logs-by-retention` and `v1/usage/hosts`.
 
-![Audit Logs Example](https://github.com/Dalje-et/simo/blob/main/static/images/audit-logs.png)
+![Audit Logs Ingestion](https://github.com/Dalje-et/simo/blob/main/static/images/audit-logs.png)
 
 ```
 USAGE
@@ -238,5 +245,38 @@ USAGE
 FLAGS
   --trigger  Will ingest enough data in order to trigger the monitor (only supported if you kept the default values)
 ```
+
+### `simo ingest ci`
+
+Ingests CI events to your org by TODO
+
+```
+USAGE
+  $ simo ingest ci [--trigger]
+
+FLAGS
+  --trigger  Will ingest enough data in order to trigger the monitor (only supported if you kept the default values)
+```
+
+### `simo ingest errors`
+
+Ingests Error Tracking events to your org by running a lightweight local web server and simulate page vists with Cypress. On each page load an error is generated using the [RUM SDK](https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm#collect-errors-manually):
+
+```
+  DD_RUM.onReady(function() {
+    DD_RUM.addError(new Error('Accounting error!'));
+  })
+```
+
+![Error Tracking Ingestion](https://github.com/Dalje-et/simo/blob/main/static/images/error-tracking.png)
+ 
+```
+USAGE
+  $ simo ingest ci [--trigger]
+
+FLAGS
+  --trigger  Will ingest enough data in order to trigger the monitor (only supported if you kept the default values)
+```
+
 
 <!-- commandsstop -->
