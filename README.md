@@ -57,15 +57,8 @@ Don't forget to run `source ~/.bashrc` after editing the file in order to save a
 **Making CI Pipeline Events work (~3mins)**
 In order to make CI Pipeline Events work you need to instrument your forked GitHub repository's Actions. For this, follow the tutorial [here](https://app.datadoghq.com/ci/setup/pipeline?provider=github).
 
-**Making RUM Events work (~3mins)**
-To make sure that RUM events are sent to the correct place, you need to create a RUM Application in your Datadog organisation. Visit [RUM](https://app.datadoghq.com/rum/list) in-app and select "New Application", enter `simo` as an application name,  and hit "Create". Now,  make sure you choose `CDN Sync` as your instrumentation type. You should then see a code snippet on the left side of your screen. Edit your `~/.bashrc` file again and add the following below `SIMO_BASE_PATH`: 
-
-```
-export SIMO_RUM_APPLICATION_ID="application-id-from-code-snippet"
-export SIMO_RUM_CLIENT_TOKEN="client-token-from-code-snippet
-```
-
-Don't forget to run `source ~/.bashrc` after editing the file in order to save and load the changes.
+**Making RUM Events work (~2mins)**
+To make sure that RUM events are sent to the correct place, you need to create a RUM Application in your Datadog organisation. Visit [RUM](https://app.datadoghq.com/rum/list) in-app and select "New Application", enter `simo` as an application name,  and hit "Create". Now,  make sure you choose `CDN Sync` as your instrumentation type. You should then see a code snippet on the left side of your screen. Edit the file over at `src/util/server/env.js` and fill it out with the corresponding applicationId and client token that you see in the code snippet. Save the file afterwards.
 
 # Tags
 
