@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
+    <script src="env.js"></script>
+
     <script>
       (function(h,o,u,n,d) {
         h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
@@ -9,8 +11,8 @@
       })(window,document,'script','https://www.datadoghq-browser-agent.com/datadog-rum-v4.js','DD_RUM')
       DD_RUM.onReady(function() {
         DD_RUM.init({
-          clientToken: 'pubf3ea29a1c3b70be4efaeb12b5e6a48bd',
-          applicationId: '264af7f9-d5fc-4438-916e-595304b51973',
+          clientToken: SIMO_RUM_CLIENT_TOKEN,
+          applicationId: SIMO_RUM_APPLICATION_ID,
           site: 'datadoghq.com',
           service:'shipping-frontend',
           env:'prod',

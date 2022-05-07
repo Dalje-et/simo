@@ -1,11 +1,11 @@
 simo
 =================
 
-Your favourite tool to **si**mulate **mo**nitor behaviour
+Your favourite tool to **si**mulate **mo**nitor behaviour.
 
 # Introduction
 
-`simo` is a light-weight CLI tool that has mainly two responsibilities: **create** monitors and **ingest** data into your Datadog org to eventually cause the created monitors to trigger certain behaviour. Its purpose is to introduce e2e tests with on Monitors within production. For optimal results, `simo` should be used in your personal org.
+`simo` is a light-weight CLI tool that has mainly two responsibilities: **create** monitors and **ingest** data into your Datadog org to eventually cause the created monitors to trigger. Its purpose is to introduce e2e tests on Monitors within production. For optimal results, `simo` should be used in your personal org.
 
 TODO: insert cool GIF
 
@@ -35,11 +35,11 @@ Let's make this as quick and easy as possible for you. Make sure you have the fo
     alias agentconfig="cat /opt/datadog-agent/etc/datadog.yaml"
   ```
   - adjust the agent config to enable apm (search for `apm_config:` and check that it says `enabled: true` below that) and restart the agent (you can control the agent with the aliases above)
-  - lastly, don't forget to run `source ~/.bashrc` after editing the file in order to reload
+  - lastly, don't forget to run `source ~/.bashrc` after editing the file in order to save and load the changes.
 
 ## Installation
 
-Follow these steps to set up `simo` locally (~5mins):
+Follow these steps to set up `simo` locally (~3mins):
 
 - Clone your forked Github `simo` repository
 - Choose the location of this directory carefully. After cloning the repo, open your terminal and navigate to the clone repo. Make sure you are within the repo and then run `pwd`. The output is likely going to look like `/path/to/directory/simo`
@@ -52,8 +52,20 @@ export SIMO_BASE_PATH="output-of-pwd-here"
 alias simo="output-of-pwd-here"/bin/dev
 ```
 
-- set up CI
-- set up RUM
+Don't forget to run `source ~/.bashrc` after editing the file in order to save and load the changes.
+
+**Making CI Pipeline Events work (~3mins)**
+In order to make CI Pipeline Events work you need to instrument your forked GitHub repository's Actions. For this, follow the tutorial [here](https://app.datadoghq.com/ci/setup/pipeline?provider=github).
+
+**Making RUM Events work (~3mins)**
+To make sure that RUM events are sent to the correct place, you need to create a RUM Application in your Datadog organisation. Visit [RUM](https://app.datadoghq.com/rum/list) in-app and select "New Application", enter `simo` as an application name,  and hit "Create". Now,  make sure you choose `CDN Sync` as your instrumentation type. You should then see a code snippet on the left side of your screen. Edit your `~/.bashrc` file again and add the following below `SIMO_BASE_PATH`: 
+
+```
+export SIMO_RUM_APPLICATION_ID="application-id-from-code-snippet"
+export SIMO_RUM_CLIENT_TOKEN="client-token-from-code-snippet
+```
+
+Don't forget to run `source ~/.bashrc` after editing the file in order to save and load the changes.
 
 # Tags
 
