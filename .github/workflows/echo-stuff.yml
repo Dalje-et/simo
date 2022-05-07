@@ -1,0 +1,11 @@
+name: "Echo some stuff"
+
+on: [push, pull_request]
+
+jobs:
+  build:
+  runs-on: ubuntu-latest
+  steps:
+  - name: just echo a message
+    run: |
+      echo Hello there!
