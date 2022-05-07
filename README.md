@@ -111,8 +111,9 @@ FLAGS
 
 ### `simo create ci`
 
-Creates a ci monitor
+Creates a CI Visibility monitor.
 
+```
 USAGE
   $ simo create ci [--multi] [--operator above|below] [--on_missing_data
     show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
@@ -124,11 +125,13 @@ FLAGS
                               <options: show_no_data|show_and_notify_no_data|resolve|default>
   --operator=<option>         [default: above] Operator that shall be used for the threshold.
                               <options: above|below>
+```
 
 ### `simo create error-tracking`
 
-Creates an error-tracking monitor
+Creates an error-tracking monitor.
 
+```
 USAGE
   $ simo create error [--multi] [--operator above|below] [--on_missing_data
     show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
@@ -140,11 +143,13 @@ FLAGS
                               <options: show_no_data|show_and_notify_no_data|resolve|default>
   --operator=<option>         [default: above] Operator that shall be used for the threshold.
                               <options: above|below>
+```
 
 ### `simo create events`
 
-Creates an event monitor
+Creates an event monitor.
 
+```
 USAGE
   $ simo create event [--multi] [--operator above|below] [--on_missing_data
     show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
@@ -156,11 +161,13 @@ FLAGS
                               <options: show_no_data|show_and_notify_no_data|resolve|default>
   --operator=<option>         [default: above] Operator that shall be used for the threshold.
                               <options: above|below>
+```
 
 ### `simo create logs`
 
-Creates a logs monitor
+Creates a logs monitor.
 
+```
 USAGE
   $ simo create logs [--multi] [--operator above|below] [--on_missing_data
     show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
@@ -172,11 +179,13 @@ FLAGS
                               <options: show_no_data|show_and_notify_no_data|resolve|default>
   --operator=<option>         [default: above] Operator that shall be used for the threshold.
                               <options: above|below>
+```
 
 ### `simo create rum`
 
-Creates a rum monitor
+Creates a RUM monitor.
 
+```
 USAGE
   $ simo create rum [--multi] [--operator above|below] [--on_missing_data
     show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
@@ -188,11 +197,13 @@ FLAGS
                               <options: show_no_data|show_and_notify_no_data|resolve|default>
   --operator=<option>         [default: above] Operator that shall be used for the threshold.
                               <options: above|below>
+```
 
 ### `simo create trace-analytics`
 
-Creates a trace-analytics monitor
+Creates an APM Trace Analytics monitor.
 
+```
 USAGE
   $ simo create trace-analytics [--multi] [--operator above|below] [--on_missing_data
     show_no_data|show_and_notify_no_data|resolve|default] [--name <value>]
@@ -204,6 +215,7 @@ FLAGS
                               <options: show_no_data|show_and_notify_no_data|resolve|default>
   --operator=<option>         [default: above] Operator that shall be used for the threshold.
                               <options: above|below>
+```
 
 ## `simo ingest`
 
@@ -215,13 +227,16 @@ The ingestion adheres to the default threshold values that are set when creating
 
 ### `simo ingest audit-logs`
 
+Ingests Audit Logs to your instance by calling the endpoints `v1/usage/logs-by-retention` and `v1/usage/hosts`.
 
-Ingest Audit Logs
+[Audit Logs Example](static/images/audit-logs.png)
 
+```
 USAGE
   $ simo ingest audit-logs [--trigger]
 
 FLAGS
   --trigger  Will ingest enough data in order to trigger the monitor (only supported if you kept the default values)
+```
 
 <!-- commandsstop -->
