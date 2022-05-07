@@ -1,11 +1,7 @@
 simo
 =================
 
-Your favourite tool to **si**mulate **mo**nitor behaviour.
-
-# Introduction
-
-`simo` is a light-weight CLI tool that has mainly two responsibilities: **create** monitors and **ingest** data into your Datadog org to eventually cause the created monitors to trigger. Its purpose is to introduce e2e tests on Monitors within production. For optimal results, `simo` should be used in your personal org.
+**simo** is a light-weight CLI tool that has mainly two responsibilities: **create** monitors and **ingest** data into your Datadog org to eventually cause the created monitors to trigger. Its purpose is to introduce e2e tests on Monitors within production. For optimal results, **simo** should be used in your personal org. 
 
 TODO: insert cool GIF
 
@@ -15,7 +11,7 @@ TODO: Explain creation and ingestion with diagram
 
 # Getting Started
 
-Being built in Node.js, `simo` could technically be installed via npm, e.g. via `npm install -g simo`. However, the author of this is incredibly lazy and at this point of time doesn't want this tool to be publically available. Therefore, in order to use `simo`, **you need to fork this repository in your own Github account** and work on that fork.
+Being built in Node.js, **simo** could technically be installed via npm, e.g. via `npm install -g simo`. However, the author of this is incredibly lazy and at this point of time doesn't want this tool to be publically available. Therefore, in order to use **simo**, **you need to fork this repository in your own Github account** and work on that fork.
 
 ## Prerequisites
 
@@ -39,9 +35,9 @@ Let's make this as quick and easy as possible for you. Make sure you have the fo
 
 ## Installation
 
-Follow these steps to set up `simo` locally (~3mins):
+Follow these steps to set up **simo** locally (~3mins):
 
-- Clone your forked Github `simo` repository
+- Clone your forked Github **simo** repository
 - Choose the location of this directory carefully. After cloning the repo, open your terminal and navigate to the clone repo. Make sure you are within the repo and then run `pwd`. The output is likely going to look like `/path/to/directory/simo`
 - Copy the output of the `pwd` command and edit your `~/.bashrc` file again, add the following lines to the bottom of the file:
 ```
@@ -62,7 +58,7 @@ To make sure that RUM events are sent to the correct place, you need to create a
 
 # Tags
 
-Each monitor created by `simo` is by default tagged with `simo`. If you want to add more default tags, modify the `generatePayload` method in `/src/util/payload-generator.ts` accordingly.
+Each monitor created by **simo** is by default tagged with `simo`. If you want to add more default tags, modify the `generatePayload` method in `/src/util/payload-generator.ts` accordingly.
 
 # Documentation
 <!-- commands -->
