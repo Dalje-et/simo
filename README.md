@@ -229,7 +229,7 @@ The ingestion adheres to the default threshold values that are set when creating
 
 Ingests Audit Logs to your instance by calling the endpoints `v1/usage/logs-by-retention` and `v1/usage/hosts`.
 
-[Audit Logs Example](static/images/audit-logs.png)
+![Audit Logs Example](https://github.com/Dalje-et/simo/blob/main/static/images/audit-logs.png)
 
 ```
 USAGE
