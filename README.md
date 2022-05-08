@@ -3,15 +3,17 @@ simo
 
 **simo** is a light-weight CLI tool that has mainly two responsibilities: **create** monitors and **ingest** data into your Datadog org to eventually cause the created monitors to trigger. Its purpose is to introduce e2e tests on Monitors within production. For optimal results, **simo** should be used in your personal org. 
 
-TODO: insert cool GIF
+![RUM Events Ingestion](https://github.com/Dalje-et/simo/blob/main/static/images/simo_in_action.mp4)
 
 # How it works
 
-TODO: Explain creation and ingestion with diagram
+Creation and ingestion are closely tied to each other. In fact, **simo** doesn't allow you to enter arbitrary thresholds during monitor creation. It works on fixed values. The idea is that the values themselves are not interesting for e2e testing, but rather the transitions of monitors. Therefore, by default, users are not able to control the thresholds during monitor creation. Here's how it works:
+
+
 
 # Getting Started
 
-Being built in Node.js, **simo** could technically be installed via npm, e.g. via `npm install -g simo`. However, the author of this is incredibly lazy and at this point of time doesn't want this tool to be publically available. Therefore, in order to use **simo**, **you need to fork this repository in your own Github account** and work on that fork.
+Being built in Node.js, **simo** could technically be installed via npm, e.g. via `npm install -g simo`. However, the author of this is incredibly lazy and at this point of time doesn't want this tool to be publically available. Therefore, in order to use simo, **you need to fork this repository in your own Github account** and work on that fork.
 
 ## Prerequisites
 

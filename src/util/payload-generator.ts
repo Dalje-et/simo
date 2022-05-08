@@ -5,7 +5,8 @@ import {
   BELOW_THRESHOLD,
   BELOW_THRESHOLD_PAYLOAD,
   SIMPLE_QUERIES,
-  MULTI_QUERIES
+  MULTI_QUERIES,
+  COMPOSITE
 } from "./constants"
 
 export class PayloadOptions {
@@ -51,7 +52,7 @@ export default function generatePayload(options: PayloadOptions):any {
  * The generated name will have the format
  * [{{type}}][multi/simple][{{operator}} threshold][nodata:{{on_misssing_dat}}]
  */
-function buildName(options: PayloadOptions):string {
+export function buildName(options: PayloadOptions):string {
   if (options.name === "") {
     const multi = options.multi ? "multi alert" : "simple alert"
     return `[${options.type}][${multi}][${options.operator} threshold][nodata:${options.on_missing_data}]`

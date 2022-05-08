@@ -5,6 +5,7 @@ export const ERROR = "error"
 export const CI = "ci"
 export const RUM = "rum"
 export const TRACE = "trace"
+export const COMPOSITE = "composite"
 
 // "used in type option in POST /monitors payload"
 export const TYPES:{ [key: string]: string } = {
@@ -14,7 +15,8 @@ export const TYPES:{ [key: string]: string } = {
   error: "error-tracking alert",
   ci: "ci-pipeline alert",
   rum: "rum alert",
-  trace: "trace-analytics alert"
+  trace: "trace-analytics alert",
+  composite: "composite"
 }
 
 export const SIMPLE_QUERIES:{ [key: string]: string } = {
