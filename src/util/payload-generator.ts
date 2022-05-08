@@ -52,7 +52,7 @@ export default function generatePayload(options: PayloadOptions):any {
  * The generated name will have the format
  * [{{type}}][multi/simple][{{operator}} threshold][nodata:{{on_misssing_dat}}]
  */
-export function buildName(options: PayloadOptions):string {
+function buildName(options: PayloadOptions):string {
   if (options.name === "") {
     const multi = options.multi ? "multi alert" : "simple alert"
     return `[${options.type}][${multi}][${options.operator} threshold][nodata:${options.on_missing_data}]`

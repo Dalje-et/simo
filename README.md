@@ -9,7 +9,7 @@ simo
 
 Creation and ingestion are closely tied to each other. In fact, **simo** doesn't allow you to enter arbitrary thresholds during monitor creation. It works on fixed values. The idea is that the values themselves are not interesting for e2e testing, but rather the transitions of monitors. Therefore, by default, users are not able to control the thresholds during monitor creation. Here's how it works:
 
-
+TODO lol
 
 # Getting Started
 
