@@ -3,7 +3,7 @@ simo
 
 **simo** is a light-weight CLI tool that has mainly two responsibilities: **create** monitors and **ingest** data into your Datadog org to eventually cause the created monitors to trigger. Its purpose is to introduce e2e tests on Monitors within production. For optimal results, **simo** should be used in your personal org. 
 
-![RUM Events Ingestion](https://github.com/Dalje-et/simo/blob/main/static/images/simo_in_action.mp4)
+![simo in action](https://github.com/Dalje-et/simo/blob/main/static/images/simo_in_action.gif)
 
 # How it works
 
