@@ -36,7 +36,7 @@
     "@types/listr": "^0.14.4",
     "@types/mocha": "^9.1.1",
     "@types/node": "^16.9.4",
-    "@types/node-fetch": "^2.6.1",
+    "@types/node-fetch": "^2.6.2",
     "@types/node-notifier": "^8.0.2",
     "chai": "^4",
     "eslint": "^7.32.0",
