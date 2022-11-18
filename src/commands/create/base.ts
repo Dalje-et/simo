@@ -21,6 +21,11 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
       required: false,
       default: false
     }),
+    ng: Flags.boolean({
+      description: "Adds notification grouping to the monitor. Only works when using --multi.",
+      required: false,
+      default: false
+    }),
     operator: Flags.string({
       description: "Operator that shall be used for the threshold.",
       required: false,
@@ -59,15 +64,21 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
   }
 
   async createMonitor(type:string):Promise<any> {
+    CliUx.ux.action.start(`Creating a ${type} monitor 🔮 `)
+
+    if (!this.processedFlags.multi && this.processedFlags.ng) {
+      CliUx.ux.action.stop("❌ You cannot use --ng without --multi you moron.")
+    }
+
     const payload = generatePayload({
       name: this.processedFlags.name,
       type: type,
       operator: this.processedFlags.operator,
       on_missing_data: this.processedFlags.on_missing_data,
-      multi: this.processedFlags.multi
+      multi: this.processedFlags.multi,
+      ng: this.processedFlags.ng
     })
 
-    CliUx.ux.action.start(`Creating a ${type} monitor 🔮 `)
     const response = await this.postMonitor(JSON.stringify(payload))
     if (response.errors) {
       CliUx.ux.action.stop(`❌ ${JSON.stringify(response)}`)

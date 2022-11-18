@@ -30,7 +30,7 @@ export const SIMPLE_QUERIES:{ [key: string]: string } = {
 }
 
 export const MULTI_QUERIES:{ [key: string]: string } = {
-  logs: "logs(\"*\").index(\"*\").rollup(\"count\").by(\"service\").last(\"5m\") ",
+  logs: "logs(\"*\").index(\"*\").rollup(\"count\").by(\"env,service\").last(\"5m\") ",
   events: "events(\"*\").rollup(\"count\").by(\"service\").last(\"5m\") ",
   audit: "audits(\"\\\"api/v1/usage\\\"\").rollup(\"count\").by(\"@http.url_details.path\").last(\"5m\") ",
   error: "error-tracking-rum(\"*\").rollup(\"count\").by(\"@issue.id\").last(\"5m\") ",

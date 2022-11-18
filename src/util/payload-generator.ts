@@ -16,13 +16,15 @@ export class PayloadOptions {
   operator: string
   on_missing_data: string
   multi: boolean
+  ng: boolean
 
-  constructor(name: string, type: string, operator: string, on_missing_data: string, multi: boolean) {
+  constructor(name: string, type: string, operator: string, on_missing_data: string, multi: boolean, ng: boolean) {
     this.name = name
     this.type = type
     this.operator = operator
     this.on_missing_data = on_missing_data
     this.multi = multi
+    this.ng = ng
   }
 
 }
@@ -31,17 +33,23 @@ export class PayloadOptions {
  * Takes the arguments provided by the cli and generates the monitor payload for it.
  */
 export default function generatePayload(options: PayloadOptions):any {
+  const opts: any = {
+    thresholds: options.operator === "above" ? ABOVE_THRESHOLD_PAYLOAD : BELOW_THRESHOLD_PAYLOAD,
+    notify_audit: false,
+    restriction_query: null,
+    on_missing_data: options.on_missing_data,
+  }
+
+  if (options.multi && options.ng) {
+    opts.ng = ["env"]
+  }
+
   return {
     name: buildName(options),
     type: TYPES[options.type],
     query: buildQuery(options.type, options.operator, options.multi),
     tags: ["simo"],
-    options: {
-      thresholds: options.operator === "above" ? ABOVE_THRESHOLD_PAYLOAD : BELOW_THRESHOLD_PAYLOAD,
-      notify_audit: false,
-      restriction_query: null,
-      on_missing_data: options.on_missing_data,
-    }
+    options: opts
   }
 }
 

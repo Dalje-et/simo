@@ -18,13 +18,15 @@ export default class Logs extends Base<typeof Logs.flags> {
         ddsource: "simo",
         ddtags: "simo",
         service: "shipping",
-        message: "Investigating shipping information"
+        message: "Investigating shipping information",
+        host: "COMP-C02G70VTML87"
       },
       {
         ddsource: "simo",
         ddtags: "simo",
         service: "inventory",
-        message: "Checking current inventory"
+        message: "Checking current inventory",
+        host: "COMP-C02G70VTML87"
       }
     ]
 

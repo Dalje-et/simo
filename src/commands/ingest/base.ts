@@ -68,7 +68,7 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
   */
 
   /*
-   * Ingests data via Datadog API every 10 or 30 seconds for exactly three minutes.
+   * Schedules ingestion of data via Datadog API every 10 or 30 seconds for exactly three minutes.
    *
    * Ingestion frequency depends on the --trigger flag. Ingestion frequency will be higher
    * if the --trigger flag is used in order to trigger the monitor.
@@ -84,15 +84,26 @@ export default abstract class Base<T extends typeof Base.flags> extends Command 
         clearInterval(interval)
       }
 
-      fetch(apiEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "DD-API-KEY": process.env.DD_API_KEY!
-        },
-        body: payload
-      })
+      this.postPerApi(apiEndpoint, payload)
     }, frequency)
+  }
+
+  /*
+   * Ingests data via Datadog API every 10 or 30 seconds for exactly three minutes without scheduling anything.
+   *
+   * This method leaves the scheduling aspect to the caller and solely fetches the specified API endpoint with
+   * HTTP POST and passes on the specified payload.
+   *
+   */
+  postPerApi(apiEndpoint: string, payload: string): void {
+    fetch(apiEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "DD-API-KEY": process.env.DD_API_KEY!
+      },
+      body: payload
+    })
   }
 
   /*
